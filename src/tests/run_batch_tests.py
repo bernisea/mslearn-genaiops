@@ -108,11 +108,7 @@ def run_batch_tests(experiment_name):
             input="",
         )
 
-        # Extract text from the response; fall back to str(response) if shape changes
-        try:
-            response_text = response.output[0].content[0].text
-        except Exception:
-            response_text = str(response)
+        response_text = response.output_text
 
         usage = getattr(response, "usage", None)
         token_usage = {
